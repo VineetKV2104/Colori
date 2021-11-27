@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      href="static/one/assets/images/favicon-32x32.png"
+      type="image/png"
+    />
+    <!--plugins-->
+    <link
+      href="static/one/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css"
+      rel="stylesheet"
+    />
+    <link
+      href="static/one/assets/plugins/simplebar/css/simplebar.css"
+      rel="stylesheet"
+    />
+    <link
+      href="static/one/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css"
+      rel="stylesheet"
+    />
+    <link
+      href="static/one/assets/plugins/metismenu/css/metisMenu.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link href="static/one/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="static/one/assets/css/bootstrap-extended.css"
+      rel="stylesheet"
+    />
+    <link href="static/one/assets/css/style.css" rel="stylesheet" />
+    <link href="static/one/assets/css/icons.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+
+    <!-- loader-->
+    <link href="static/one/assets/css/pace.min.css" rel="stylesheet" />
+
+    <!--Theme Styles-->
+    <link href="static/one/assets/css/dark-theme.css" rel="stylesheet" />
+    <link href="static/one/assets/css/light-theme.css" rel="stylesheet" />
+    <link href="static/one/assets/css/semi-dark.css" rel="stylesheet" />
+    <link href="static/one/assets/css/header-colors.css" rel="stylesheet" />
+
+    <title>Onedash - Bootstrap 5 Admin Template</title>
+  </head>
+
+  <body>
+    <!--start wrapper-->
+    <div class="wrapper">
+      <!--start top header-->
+      <header class="top-header">
+        <nav class="navbar navbar-expand gap-3">
+          <div class="mobile-toggle-icon fs-3">
+            <i class="bi bi-list"></i>
+          </div>
+          <form class="searchbar">
+            <div
+              class="
+                position-absolute
+                top-50
+                translate-middle-y
+                search-icon
+                ms-3
+              "
+            >
+              <i class="bi bi-search"></i>
+            </div>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Type here to search"
+            />
+            <div
+              class="
+                position-absolute
+                top-50
+                translate-middle-y
+                search-close-icon
+              "
+            >
+              <i class="bi bi-x-lg"></i>
+            </div>
+          </form>
+          <div class="top-navbar-right ms-auto">
+            <ul class="navbar-nav align-items-center">
+              <li class="nav-item search-toggle-icon">
+                <a class="nav-link" href="#">
+                  <div class="">
+                    <i class="bi bi-search"></i>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item dropdown dropdown-user-setting">
+                <a class="dropdown-item" href="/logout">
+                  <div class="d-flex align-items-center">
+                    <div class=""><i class="bi bi-lock-fill"></i></div>
+                    <div class="ms-3"><span>Logout</span></div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!--end top header-->
+
+      <!--start sidebar -->
+      <aside class="sidebar-wrapper" data-simplebar="true">
+        <div class="sidebar-header">
+          <div>
+            <img
+              src="static/Images/KapsicumLogo.png"
+              class="logo-icon"
+              alt="logo icon"
+            />
+          </div>
+          <div>
+            <h4 class="logo-text" style="color: black">Kapsicum Web</h4>
+          </div>
+          <div class="toggle-icon ms-auto"><i class="bi bi-list"></i></div>
+        </div>
+        <!--navigation-->
+        <ul class="metismenu" id="menu">
+          <li>
+            <a href="/admin">
+              <!-- <div class="parent-icon">
+                <i class="bi bi-collection-play-fill"></i>
+              </div> -->
+              <div class="menu-title">Dashboard</div>
+            </a>
+            <a href="/bannerpanel">
+              <!-- <div class="parent-icon">
+                <i class="bi bi-collection-play-fill"></i>
+              </div> -->
+              <div class="menu-title">Banner</div>
+            </a>
+            <a href="/portfoliopanel">
+              <!-- <div class="parent-icon">
+                <i class="bi bi-collection-play-fill"></i>
+              </div> -->
+              <div class="menu-title">Clients</div>
+            </a>
+            <a href="/portfoliogallerypanel">
+              <!-- <div class="parent-icon">
+                <i class="bi bi-collection-play-fill"></i>
+              </div> -->
+              <div class="menu-title">Portfolio Gallery</div>
+            </a>
+            <a href="/eventpanel">
+              <!-- <div class="parent-icon">
+                <i class="bi bi-collection-play-fill"></i>
+              </div> -->
+              <div class="menu-title">Events</div>
+            </a>
+            <a href="/productpanel">
+              <!-- <div class="parent-icon">
+                <i class="bi bi-collection-play-fill"></i>
+              </div> -->
+              <div class="menu-title">Products</div>
+            </a>
+            <a href="/aboutuspanel">
+              <!-- <div class="parent-icon">
+                <i class="bi bi-collection-play-fill"></i>
+              </div> -->
+              <div class="menu-title">About</div>
+            </a>
+          </li>
+        </ul>
+        <!--end navigation-->
+      </aside>
+      <!--end sidebar -->
+
+      <!--start content-->
+      <main class="page-content">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <h5 class="mb-0">Portfolio Gallery</h5>
+              <div class="fs-5 ms-auto dropdown">
+                <div class="col">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
+                    Add Image
+                  </button>
+                </div>
+              </div>
+              <div
+                div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Add Image
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <form
+                      action="/portfoliogallerypanel"
+                      method="post"
+                      enctype="multipart/form-data"
+                    >
+                      <div class="modal-body">
+                        <div class="mb-3">
+                          <label
+                            for="exampleFormControlInput1"
+                            class="form-label"
+                            >Select Client</label
+                          >
+                          <select
+                            class="form-select mb-3"
+                            aria-label="Default select example"
+                            name="client_id"
+                          >
+                            <option selected disabled>select</option>
+                            {% for client in clients %}
+
+                            <option value="{{client['client_id']}}">
+                              {{client['Name']}}
+                            </option>
+
+                            {% endfor %}
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label
+                            for="exampleFormControlInput1"
+                            class="form-label"
+                            >Upload Portfolio Image</label
+                          >
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="exampleFormControlInput1"
+                            placeholder="Enter Title Name"
+                            name="imgfile"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                          Add
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive mt-3">
+              <table class="table align-middle">
+                <thead class="table-secondary">
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for pimg in portfolio_gallerys %}
+                  <tr>
+                    <td>{{loop.index}}</td>
+                    <td>
+                      <div
+                        class="d-flex align-items-center gap-3 cursor-pointer"
+                      >
+                        <div class="">
+                          <p class="mb-0">{{ pimg['ImageName'] }}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <img
+                        src="static/{{pimg['Img']}}"
+                        class="product-img-2"
+                        alt="product img"
+                      />
+                    </td>
+                    <td>
+                      <div
+                        class="
+                          table-actions
+                          d-flex
+                          align-items-center
+                          gap-3
+                          fs-6
+                        "
+                      >
+                        <a
+                          href="javascript:;"
+                          class="text-primary"
+                          data-bs-toggle="modal"
+                          data-bs-placement="bottom"
+                          data-bs-target="#modal{{pimg['id']}}"
+                          title="View Image"
+                          ><i class="bi bi-eye-fill"></i
+                        ></a>
+                        <div
+                          class="modal fade"
+                          id="modal{{pimg['id']}}"
+                          tabindex="-1"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <img
+                                  src="static/{{ pimg['Img']}}"
+                                  alt=""
+                                  width="100%"
+                                  height="100%"
+                                />
+                              </div>
+                              <div class="modal-footer">
+                                <button
+                                  type="button"
+                                  class="btn btn-secondary"
+                                  data-bs-dismiss="modal"
+                                >
+                                  Close
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <a
+                          href="/deleteportfolioimage?id={{pimg['id']}}"
+                          class="text-danger"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title="Delete"
+                          ><i class="bi bi-trash-fill"></i
+                        ></a>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!--end page main-->
+
+      <!--start overlay-->
+
+      <!--end overlay-->
+
+      <!--Start Back To Top Button-->
+      <a href="javaScript:;" class="back-to-top"
+        ><i class="bx bxs-up-arrow-alt"></i
+      ></a>
+      <!--End Back To Top Button-->
+
+      <!--end switcher-->
+    </div>
+    <!--end wrapper-->
+
+    <!-- Bootstrap bundle JS -->
+    <script src="static/one/assets/js/bootstrap.bundle.min.js"></script>
+    <!--plugins-->
+    <script src="static/one/assets/js/jquery.min.js"></script>
+    <script src="static/one/assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="static/one/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+    <script src="static/one/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="static/one/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="static/one/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="static/one/assets/js/pace.min.js"></script>
+    <script src="static/one/assets/plugins/chartjs/js/Chart.min.js"></script>
+    <script src="static/one/assets/plugins/chartjs/js/Chart.extension.js"></script>
+    <script src="static/one/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <!--app-->
+    <script src="static/one/assets/js/app.js"></script>
+    <script src="static/one/assets/js/index.js"></script>
+    <script>
+      new PerfectScrollbar(".best-product");
+    </script>
+  </body>
+</html>
