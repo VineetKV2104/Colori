@@ -715,5 +715,12 @@ def settings():
     except Exception as e:
         return render_template("404.html")
 
+@app.route('/error',methods=['GET','POST'])
+def error():
+    setting_count = Settings.query.count()
+    setting_data = Settings.query.filter_by(id=setting_count).first()
+    return render_template("404.html",setting_data=setting_data)
+
+
 if __name__ == '__main__':
    app.run(debug=True)

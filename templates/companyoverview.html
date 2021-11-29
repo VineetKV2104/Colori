@@ -12,7 +12,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
     <meta name="description" content="construction html5 template" />
-    <link href="static/assets/images/favicon/favicon.ico" rel="icon" />
+    <link href="static/Images/logo2.png" rel="icon" />
 
     <!-- Fonts
 ============================================= -->
@@ -39,7 +39,7 @@
 
     <!-- Document Title
 ============================================= -->
-    <title>Yellow Hats | Construction Business HTML5 Template</title>
+    <title>Colori</title>
   </head>
   <body>
     <div class="preloader">
@@ -187,121 +187,126 @@
     <!-- Call To Action #3
 ============================================= -->
 
-<footer id="footer" class="footer-1">
-  <!-- Contact Bar
+    <footer id="footer" class="footer-1">
+      <!-- Contact Bar
 ============================================= -->
-  <div class="container footer-widgtes">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="widgets-contact">
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4 widget">
-              <div class="widget-contact-icon pull-left">
-                <i class="lnr lnr-map"></i>
+      <div class="container footer-widgtes">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="widgets-contact">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 widget">
+                  <div class="widget-contact-icon pull-left">
+                    <i class="lnr lnr-map"></i>
+                  </div>
+                  <div class="widget-contact-info">
+                    <p class="text-capitalize text-white">visit us</p>
+                    <p class="text-capitalize font-heading">
+                      {{setting_data['address']}}
+                    </p>
+                  </div>
+                </div>
+                <!-- .widget end -->
+                <div class="col-xs-12 col-sm-12 col-md-4 widget">
+                  <div class="widget-contact-icon pull-left">
+                    <i class="lnr lnr-envelope"></i>
+                  </div>
+                  <div class="widget-contact-info">
+                    <p class="text-capitalize text-white">email us</p>
+                    <p class="text-capitalize font-heading">
+                      {{setting_data['email']}}
+                    </p>
+                  </div>
+                </div>
+                <!-- .widget end -->
+                <div class="col-xs-12 col-sm-12 col-md-4 widget">
+                  <div class="widget-contact-icon pull-left">
+                    <i class="lnr lnr-phone"></i>
+                  </div>
+                  <div class="widget-contact-info">
+                    <p class="text-capitalize text-white">call us</p>
+                    <p class="text-capitalize font-heading">
+                      {{setting_data['phone_number']}}
+                    </p>
+                  </div>
+                </div>
+                <!-- .widget end -->
               </div>
-              <div class="widget-contact-info">
-                <p class="text-capitalize text-white">visit us</p>
-                <p class="text-capitalize font-heading">
-                  {{setting_data['address']}}
-                </p>
-              </div>
+              <!-- .row end -->
             </div>
-            <!-- .widget end -->
-            <div class="col-xs-12 col-sm-12 col-md-4 widget">
-              <div class="widget-contact-icon pull-left">
-                <i class="lnr lnr-envelope"></i>
-              </div>
-              <div class="widget-contact-info">
-                <p class="text-capitalize text-white">email us</p>
-                <p class="text-capitalize font-heading">
-                  {{setting_data['email']}}
-                </p>
-              </div>
-            </div>
-            <!-- .widget end -->
-            <div class="col-xs-12 col-sm-12 col-md-4 widget">
-              <div class="widget-contact-icon pull-left">
-                <i class="lnr lnr-phone"></i>
-              </div>
-              <div class="widget-contact-info">
-                <p class="text-capitalize text-white">call us</p>
-                <p class="text-capitalize font-heading">
-                  {{setting_data['phone_number']}}
-                </p>
-              </div>
-            </div>
-            <!-- .widget end -->
+            <!-- .widget-contact end -->
           </div>
-          <!-- .row end -->
+          <!-- .col-md-12 end -->
         </div>
-        <!-- .widget-contact end -->
+        <!-- .row end -->
       </div>
-      <!-- .col-md-12 end -->
-    </div>
-    <!-- .row end -->
-  </div>
-  <!-- .container end -->
+      <!-- .container end -->
 
-  <!-- Widget Section
+      <!-- Widget Section
 ============================================= -->
 
-  <!-- Social bar
+      <!-- Social bar
 ============================================= -->
-  <div class="widget-social">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6 mb-30-xs mb-30-sm">
-          <div
-            class="
-              widget-social-info
-              pull-left
-              text-capitalize
-              pull-none-xs
-              mb-15-xs
-            "
-          >
-            <p class="mb-0">
-              follow us<br />
-              on social networks
+      <div class="widget-social">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 mb-30-xs mb-30-sm">
+              <div
+                class="
+                  widget-social-info
+                  pull-left
+                  text-capitalize
+                  pull-none-xs
+                  mb-15-xs
+                "
+              >
+                <p class="mb-0">
+                  follow us<br />
+                  on social networks
+                </p>
+              </div>
+              <div
+                class="widget-social-icon pull-right text-right pull-none-xs"
+              >
+                <a href="{{setting_data['facebook']}}">
+                  <i class="fa fa-facebook"></i><i class="fa fa-facebook"></i>
+                </a>
+
+                <a href="{{setting_data['twitter']}}">
+                  <i class="fa fa-twitter"></i><i class="fa fa-twitter"></i>
+                </a>
+
+                <a href="{{setting_data['instagram']}}">
+                  <i class="fa fa-instagram"></i><i class="fa fa-instagram"></i>
+                </a>
+                <a href="{{setting_data['youtube']}}">
+                  <i class="fa fa-youtube"></i><i class="fa fa-youtube"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Copyrights
+============================================= -->
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 copyrights text-center">
+            <p class="text-capitalize">© 2021 Colori. all rights reserved</p>
+            <p>
+              <a href="https://www.kapsicumweb.com/" target="_blank">
+                <img
+                  src="static/Images/KapsicumLogo.png"
+                  alt=""
+                  height="50px"
+                  width="50px"
+                />
+              </a>
             </p>
           </div>
-          <div
-            class="widget-social-icon pull-right text-right pull-none-xs"
-          >
-            <a href="{{setting_data['facebook']}}">
-              <i class="fa fa-facebook"></i><i class="fa fa-facebook"></i>
-            </a>
-
-            <a href="{{setting_data['twitter']}}">
-              <i class="fa fa-twitter"></i><i class="fa fa-twitter"></i>
-            </a>
-
-            <a href="{{setting_data['instagram']}}">
-              <i class="fa fa-instagram"></i><i class="fa fa-instagram"></i>
-            </a>
-            <a href="{{setting_data['youtube']}}">
-              <i class="fa fa-youtube"></i><i class="fa fa-youtube"></i>
-            </a>
-          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <!-- Copyrights
-============================================= -->
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 copyrights text-center">
-        <p class="text-capitalize">© 2021 Colori. all rights reserved</p>
-        <p>
-          <a href="https://www.kapsicumweb.com/" target="_blank">
-            <img src="static/Images/KapsicumLogo.png" alt="" />
-          </a>
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
+    </footer>
 
     <!-- Footer Scripts
 ============================================= -->
