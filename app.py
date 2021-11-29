@@ -150,6 +150,18 @@ class Aboutus(db.Model):
     title = db.Column(db.String(100), nullable=True)
     data = db.Column(db.String, nullable=True)
 
+class Settings(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    address = db.Column(db.String, nullable=True)
+    email = db.Column(db.String, nullable=True)
+    phone_number = db.Column(db.String, nullable=True)
+    facebook = db.Column(db.String, nullable=True)
+    twitter = db.Column(db.String, nullable=True)
+    youtube = db.Column(db.String, nullable=True)
+    instagram = db.Column(db.String, nullable=True)
+    maplink = db.Column(db.String, nullable=True)
+    
+    
 
 
 
@@ -157,7 +169,9 @@ class Aboutus(db.Model):
 def hello_world():
     try:
         banner = banners.query.all()
-        return render_template("index.html",banners=banner)
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("index.html",banners=banner,setting_data=setting_data)
     except Exception as e:
         return render_template("404.html")
 
@@ -173,7 +187,9 @@ def brandsDisplay():
 def productsDisplay():
     try:
         products = product.query.all()
-        return render_template("products.html",products=products)
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("products.html",products=products,setting_data=setting_data)
     except Exception as e:
         return render_template("404.html")
 
@@ -182,7 +198,9 @@ def productDetails():
     try:
         pid = request.args['id']
         products = product.query.filter_by(id=pid).all()
-        return render_template("product_details.html",products=products)
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("product_details.html",products=products,setting_data=setting_data)
     except Exception as e:
         return render_template("404.html")
 
@@ -190,7 +208,9 @@ def productDetails():
 def companyoverview():
     try:
         aboutus = Aboutus.query.all()
-        return render_template("companyoverview.html",aboutus=aboutus)
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("companyoverview.html",aboutus=aboutus,setting_data=setting_data)
     except Exception as e:
         return render_template("404.html")
 
@@ -198,7 +218,9 @@ def companyoverview():
 def eventsandexhibit():
     try:
         events = event.query.all()
-        return render_template("eventsandexhibit.html",events=events)
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("eventsandexhibit.html",events=events,setting_data=setting_data)
     except Exception as e:
         return render_template("404.html")
 
@@ -206,7 +228,9 @@ def eventsandexhibit():
 def portfolio():
     try:
         portfolios = client.query.all()
-        return render_template("portfolio.html",portfolios=portfolios)
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("portfolio.html",portfolios=portfolios,setting_data=setting_data)
     except Exception as e:
         return render_template("404.html")
 
@@ -216,14 +240,18 @@ def portfoliodetails():
         client_id = request.args['cid']
         clientdata = client.query.filter_by(client_id=client_id).first()
         portfolio_gal = portfolio_gallery.query.filter_by(ClientId=client_id).all() 
-        return render_template("portfolio_details.html",portfolio_gal=portfolio_gal,clientdata=clientdata)
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("portfolio_details.html",portfolio_gal=portfolio_gal,clientdata=clientdata,setting_data=setting_data)
     except Exception as e:
         return render_template("404.html")
 
 @app.route("/contactus")
 def contactus():
     try:
-        return render_template("contact.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("contact.html",setting_data=setting_data)
     except Exception as e:
         return render_template("404.html")
 
@@ -245,9 +273,13 @@ def becomeadealer():
             vatno = request.form['vatno']
             typeofactivity = request.form['typeofactivity']
             producthandled = request.form['producthandled']
+            setting_count = Settings.query.count()
+            setting_data = Settings.query.filter_by(id=setting_count).first()
             # print(fname,lname,address,city,pincode,country,cname,jtitle,email,telephone,mobile,vatno,typeofactivity,producthandled)
-            return render_template("becomeadealer.html",success_message=1)
-        return render_template("becomeadealer.html",success_message=0)
+            return render_template("becomeadealer.html",success_message=1,setting_data=setting_data)
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("becomeadealer.html",success_message=0,setting_data=setting_data)
     except Exception as e:
         return render_template("404.html")
 
@@ -654,6 +686,32 @@ def deleteproduct():
         db.session.delete(removeproduct)
         db.session.commit()
         return redirect("/productpanel")
+    except Exception as e:
+        return render_template("404.html")
+
+@app.route('/settings',methods=['GET','POST'])
+def settings():
+    try:
+        if request.method=='POST':
+            setting_count = Settings.query.count()
+            if setting_count == 0:
+                addsetting = Settings(address=request.form['address'],email=request.form['email'],phone_number=request.form['phone_number'],facebook=request.form['facebook'],twitter=request.form['twitter'],youtube=request.form['youtube'],instagram=request.form['instagram'],maplink=request.form['maplink'])
+                db.session.add(addsetting)
+                db.session.commit()
+                return redirect("/settings")
+            setting_data = Settings.query.filter_by(id=setting_count).first()
+            setting_data.address = request.form['address']
+            setting_data.email = request.form['email']
+            setting_data.phone_number = request.form['phone_number']
+            setting_data.facebook = request.form['facebook']
+            setting_data.twitter = request.form['twitter']
+            setting_data.youtube = request.form['youtube']
+            setting_data.instagram = request.form['instagram']
+            setting_data.maplink = request.form['maplink']
+            db.session.commit()
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("settings.html",setting_data=setting_data)
     except Exception as e:
         return render_template("404.html")
 

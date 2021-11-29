@@ -179,177 +179,127 @@
 
       <!--start content-->
       <main class="page-content">
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex align-items-center">
-              <h5 class="mb-0">Banner Details</h5>
-              <div class="fs-5 ms-auto dropdown">
-                <div class="col">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                  >
-                    Add Banner
-                  </button>
-                </div>
+        <section class="">
+          <div class="container">
+            <form action="" method="post" class="">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Address</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Address"
+                  value="{{setting_data.address}}"
+                  name="address"
+                  required
+                />
               </div>
-              <div
-                div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        Add Banner
-                      </h5>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <form
-                      action="/bannerpanel"
-                      method="post"
-                      enctype="multipart/form-data"
-                    >
-                      <div class="modal-body">
-                        <div class="mb-3">
-                          <label
-                            for="exampleFormControlInput1"
-                            class="form-label"
-                            >Upload Banner Image</label
-                          >
-                          <input
-                            type="file"
-                            class="form-control"
-                            id="exampleFormControlInput1"
-                            placeholder="Enter Title Name"
-                            name="imgfile"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                          Upload
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Email"
+                  name="email"
+                  value="{{setting_data.email}}"
+                  required
+                />
               </div>
-            </div>
-            <div class="table-responsive mt-3">
-              <table class="table align-middle">
-                <thead class="table-secondary">
-                  <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Image</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for banner in banners %}
-                  <tr>
-                    <td>{{loop.index}}</td>
-                    <td>
-                      <div
-                        class="d-flex align-items-center gap-3 cursor-pointer"
-                      >
-                        <div class="">
-                          <p class="mb-0">{{ banner['Name'] }}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <img
-                        src="static/{{banner['B_Image']}}"
-                        class="product-img-2"
-                        alt="product img"
-                      />
-                    </td>
-                    <td>
-                      <div
-                        class="
-                          table-actions
-                          d-flex
-                          align-items-center
-                          gap-3
-                          fs-6
-                        "
-                      >
-                        <a
-                          href="javascript:;"
-                          class="text-primary"
-                          data-bs-toggle="modal"
-                          data-bs-placement="bottom"
-                          data-bs-target="#modal{{banner['id']}}"
-                          title="View Image"
-                          ><i class="bi bi-eye-fill"></i
-                        ></a>
-                        <div
-                          class="modal fade"
-                          id="modal{{banner['id']}}"
-                          tabindex="-1"
-                          aria-hidden="true"
-                        >
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-body">
-                                <img
-                                  src="static/{{ banner['B_Image']}}"
-                                  alt=""
-                                  width="100%"
-                                  height="100%"
-                                />
-                              </div>
-                              <div class="modal-footer">
-                                <button
-                                  type="button"
-                                  class="btn btn-secondary"
-                                  data-bs-dismiss="modal"
-                                >
-                                  Close
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
 
-                        <a
-                          href="/deletebanner?id={{banner['id']}}"
-                          class="text-danger"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="bottom"
-                          title="Delete"
-                          ><i class="bi bi-trash-fill"></i
-                        ></a>
-                      </div>
-                    </td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Phone Number</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Phone Number"
+                  name="phone_number"
+                  value="{{setting_data.phone_number}}"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Facebook</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Facebook Link "
+                  name="facebook"
+                  value="{{setting_data.facebook}}"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Twitter</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Twitter Link"
+                  name="twitter"
+                  value="{{setting_data.twitter}}"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Youtube</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Name Link"
+                  name="youtube"
+                  value="{{setting_data.youtube}}"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Instagram</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Instagram"
+                  name="instagram"
+                  value="{{setting_data.instagram}}"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Map Link</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Map Link"
+                  name="maplink"
+                  value="{{setting_data.maplink}}"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
           </div>
-        </div>
+        </section>
       </main>
       <!--end page main-->
 

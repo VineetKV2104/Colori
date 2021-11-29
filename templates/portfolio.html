@@ -67,7 +67,7 @@
               <span class="icon-bar"></span>
             </button>
             <a class="logo" href="/">
-              <img src="static/Images/logo3.png" alt="Yellow Hats" />
+              <img src="static/Images/logo1.PNG" alt="Colori" />
             </a>
           </div>
 
@@ -159,7 +159,7 @@
           <div class="col-xs-12 col-sm-12 col-md-12">
             <!-- .row end -->
             <div class="row">
-              {% for portfolio in portfolios[::-1] %}
+              {% for portfolio in portfolios %}
               <a href="/portfoliodetails?cid={{portfolio['client_id']}}">
                 <!-- product #1 -->
                 <div class="col-xs-12 col-sm-2 col-md-2 product-item">
@@ -181,7 +181,7 @@
     </section>
     <footer id="footer" class="footer-1">
       <!-- Contact Bar
-        ============================================= -->
+	============================================= -->
       <div class="container footer-widgtes">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12">
@@ -194,7 +194,7 @@
                   <div class="widget-contact-info">
                     <p class="text-capitalize text-white">visit us</p>
                     <p class="text-capitalize font-heading">
-                      tanta , alGharbia, egypt.
+                      {{setting_data['address']}}
                     </p>
                   </div>
                 </div>
@@ -206,7 +206,7 @@
                   <div class="widget-contact-info">
                     <p class="text-capitalize text-white">email us</p>
                     <p class="text-capitalize font-heading">
-                      7oroof@7oroof.com
+                      {{setting_data['email']}}
                     </p>
                   </div>
                 </div>
@@ -217,7 +217,9 @@
                   </div>
                   <div class="widget-contact-info">
                     <p class="text-capitalize text-white">call us</p>
-                    <p class="text-capitalize font-heading">002 01065370701</p>
+                    <p class="text-capitalize font-heading">
+                      {{setting_data['phone_number']}}
+                    </p>
                   </div>
                 </div>
                 <!-- .widget end -->
@@ -233,10 +235,10 @@
       <!-- .container end -->
 
       <!-- Widget Section
-        ============================================= -->
+	============================================= -->
 
       <!-- Social bar
-        ============================================= -->
+	============================================= -->
       <div class="widget-social">
         <div class="container">
           <div class="row">
@@ -258,31 +260,19 @@
               <div
                 class="widget-social-icon pull-right text-right pull-none-xs"
               >
-                <a href="home-1.html#">
+                <a href="{{setting_data['facebook']}}">
                   <i class="fa fa-facebook"></i><i class="fa fa-facebook"></i>
                 </a>
-                <a href="home-1.html#">
-                  <i class="fa fa-google-plus"></i
-                  ><i class="fa fa-google-plus"></i>
-                </a>
-                <a href="home-1.html#">
+
+                <a href="{{setting_data['twitter']}}">
                   <i class="fa fa-twitter"></i><i class="fa fa-twitter"></i>
                 </a>
-                <a href="home-1.html#">
-                  <i class="fa fa-linkedin"></i><i class="fa fa-linkedin"></i>
+
+                <a href="{{setting_data['instagram']}}">
+                  <i class="fa fa-instagram"></i><i class="fa fa-instagram"></i>
                 </a>
-                <a href="home-1.html#">
-                  <i class="fa fa-vimeo-square"></i
-                  ><i class="fa fa-vimeo-square"></i>
-                </a>
-                <a href="home-1.html#">
-                  <i class="fa fa-pinterest"></i><i class="fa fa-pinterest"></i>
-                </a>
-                <a href="home-1.html#">
-                  <i class="fa fa-flickr"></i><i class="fa fa-flickr"></i>
-                </a>
-                <a href="home-1.html#">
-                  <i class="fa fa-rss"></i><i class="fa fa-rss"></i>
+                <a href="{{setting_data['youtube']}}">
+                  <i class="fa fa-youtube"></i><i class="fa fa-youtube"></i>
                 </a>
               </div>
             </div>
@@ -290,18 +280,15 @@
         </div>
       </div>
       <!-- Copyrights
-        ============================================= -->
+	============================================= -->
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 copyrights text-center">
-            <p class="text-capitalize">
-              © 2016 - 2017 yellow hats. all rights reserved
-            </p>
-            <p class="text-capitalize">
-              With Love by
-              <a href="http://themeforest.net/user/7oroof/portfolio?ref=7oroof"
-                >7oroof.com</a
-              >
+            <p class="text-capitalize">© 2021 Colori. all rights reserved</p>
+            <p>
+              <a href="https://www.kapsicumweb.com/" target="_blank">
+                <img src="static/Images/KapsicumLogo.png" alt="" />
+              </a>
             </p>
           </div>
         </div>
