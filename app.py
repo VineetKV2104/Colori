@@ -126,6 +126,7 @@ class product(db.Model):
     DateTime = db.Column(db.String(100), nullable=True)
     Video = db.Column(db.String(100), nullable=True)
     BrandID = db.Column(db.Integer)
+    P_ID = db.Column(db.Integer)
 
 class stencils(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -196,11 +197,13 @@ def productsDisplay():
 @app.route("/productDetails")
 def productDetails():
     try:
-        pid = request.args['id']
-        products = product.query.filter_by(id=pid).all()
+        pid = request.args['pid']
+        products = product.query.filter_by(P_ID=pid).all()
+        apps = application.query.filter_by(P_ID=pid).all()
+        swatchesdata = swatches.query.filter_by(P_ID=pid).all()
         setting_count = Settings.query.count()
         setting_data = Settings.query.filter_by(id=setting_count).first()
-        return render_template("product_details.html",products=products,setting_data=setting_data)
+        return render_template("product_details.html",products=products,setting_data=setting_data,apps=apps,swatchesdata=swatchesdata)
     except Exception as e:
         return render_template("404.html")
 
@@ -727,6 +730,18 @@ def error():
     setting_count = Settings.query.count()
     setting_data = Settings.query.filter_by(id=setting_count).first()
     return render_template("404.html",setting_data=setting_data)
+
+# @app.route("/transfer")
+# def transfer():
+#     clientdata = client.query.all()
+#     for c in clientdata:
+#         c.client_id=c.id+2
+#         print(c.client_id)
+#         db.session.commit()
+#     clientdata1 = client.query.all()
+#     for i in clientdata1:
+#         print(i.client_id)
+#     return "Done"
 
 
 if __name__ == '__main__':

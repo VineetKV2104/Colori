@@ -188,6 +188,30 @@
               <div class="product-details text-center-xs">
                 <h5>Applications</h5>
               </div>
+              <div class="row">
+                {% for app in apps %}
+                <div class="col-xs-12 col-sm-2 col-md-2 product-item">
+                  <div class="product-img">
+                    <img src="static/{{app['ImageSrc']}}" alt="product" />
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+              <hr class="mt-50 mb-30" />
+              <div class="product-details text-center-xs">
+                <h5>Swatches</h5>
+              </div>
+              <div class="row">
+                {% for swatches in swatchesdata %}
+                <div class="col-xs-12 col-sm-2 col-md-2 product-item">
+                  <div class="product-img">
+                    <img src="static/{{swatches['ImageSrc']}}" alt="product" />
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
               <!-- .product-details end -->
               <hr class="mt-30 mb-30" />
               <div class="product-details text-center-xs">
