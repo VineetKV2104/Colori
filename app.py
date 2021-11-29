@@ -286,6 +286,9 @@ def becomeadealer():
 @app.route('/admin')
 def Admin():
     try:
+        if not session.get("name"):
+            # if not there in the session then redirect to the login page
+            return redirect("/login")
         return render_template('adminpanel.html')
     except Exception as e:
         return render_template("404.html")
@@ -691,7 +694,11 @@ def deleteproduct():
 
 @app.route('/settings',methods=['GET','POST'])
 def settings():
+    
     try:
+        if not session.get("name"):
+            # if not there in the session then redirect to the login page
+            return redirect("/login")
         if request.method=='POST':
             setting_count = Settings.query.count()
             if setting_count == 0:
