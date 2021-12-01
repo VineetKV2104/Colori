@@ -1376,8 +1376,9 @@ footer {
 }
 
 .navbar .logo {
-  height: 94px;
   line-height: 94px;
+  width: 250px;
+  height: 43px;
 }
 
 .navbar-nav {

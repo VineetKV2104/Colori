@@ -167,19 +167,20 @@
               {% for product in products %}
               <!-- product #1 -->
               <div class="col-xs-12 col-sm-3 col-md-3 product-item">
-                <div class="product-img">
-                  <img src="static/{{product['Product_Img1']}}" alt="product" />
-                </div>
-                <!-- .product-img end -->
-                <div class="product-bio">
-                  <h4>
-                    <a href="/productDetails?pid={{product['P_ID']}}"
-                      >{{product['Name']}}</a
-                    >
-                  </h4>
-                  <!-- <p class="product-price">$68.00</p> -->
-                </div>
-                <!-- .product-bio end -->
+                <a href="/productDetails?pid={{product['P_ID']}}">
+                  <div class="product-img">
+                    <img
+                      src="static/{{product['Product_Img1']}}"
+                      alt="product"
+                    />
+                  </div>
+                  <!-- .product-img end -->
+                  <div class="product-bio">
+                    <h4>{{product['Name']}}</h4>
+                    <!-- <p class="product-price">$68.00</p> -->
+                  </div>
+                  <!-- .product-bio end -->
+                </a>
               </div>
               <!-- .product-item clearfix end -->
               {% endfor %}

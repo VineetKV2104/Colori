@@ -164,41 +164,45 @@
     <section class="shop">
       <div class="container">
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-9 shop-content">
+          <div class="col-xs-12 col-sm-12 col-md-12 shop-content">
             <!-- Alert Message -->
-
-            <!-- .aret end -->
-
-            <!-- Product Image -->
-            <div class="product-img product-feature-img mb-50">
-              <img src="static/{{product['Product_Img2']}}" alt="product" />
-            </div>
-            <!-- .product-img end -->
-
-            <!-- Product Content -->
-            <div class="product-content">
-              <div class="product-title text-center-xs">
-                <h3>{{product['Name']}}</h3>
+            <div class="row">
+              <!-- .aret end -->
+              <!-- Product Image -->
+              <div
+                class="
+                  product-img product-feature-img
+                  mb-50
+                  col-xs-12 col-sm-12 col-md-6
+                "
+              >
+                <img src="static/{{product['Product_Img2']}}" alt="product" />
               </div>
               <!-- .product-img end -->
 
-              <!-- .product-img end -->
-
-              <div class="product-desc text-center-xs">
-                <p>{{product['Det_Desc']}}</p>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 col-sm-2 col-md-3 product-item">
-                  <div class="product-img">
-                    <img
-                      src="static/{{product['Product_Img1']}}"
-                      alt="product"
-                    />
+              <!-- Product Content -->
+              <div class="product-content col-xs-12 col-sm-12 col-md-6">
+                <div class="product-title text-center-xs">
+                  <h3>{{product['Name']}}</h3>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-2 col-md-3 product-item">
+                    <div class="">
+                      <img
+                        src="static/{{product['Product_Img1']}}"
+                        alt="product"
+                        width="200px"
+                        height="200px"
+                      />
+                    </div>
                   </div>
                 </div>
+                <div class="product-desc text-center-xs">
+                  <p>{{product['Det_Desc']}}</p>
+                </div>
               </div>
-              <!-- .product-desc end -->
-
+            </div>
+            <div class="row">
               <hr class="mt-50 mb-30" />
               <div class="product-details text-center-xs">
                 <h5>Applications</h5>
@@ -235,19 +239,10 @@
                   <source src="static/{{product['Video']}}" />
                 </video>
               </div>
-              <!-- #tab-content end -->
             </div>
             <!-- .product-tabs end -->
           </div>
-          <!-- .product-content -->
 
-          <!-- Pager -->
-
-          <!-- .row end -->
-
-          <!-- Related Project -->
-
-          <!-- .shop-content end -->
           {% endfor %}
 
           <!-- .col-md-3 end -->
