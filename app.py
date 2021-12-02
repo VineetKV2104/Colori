@@ -7,6 +7,7 @@ import os
 from flask_ckeditor import CKEditor
 from werkzeug.utils import secure_filename
 from flask_session import Session
+from flask_mail import Mail, Message
 
 
 app = Flask(__name__)
@@ -19,6 +20,15 @@ ckeditor = CKEditor(app)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
+mail=Mail(app)
+app.config['MAIL_SERVER']='vegas.servershost.net'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'no-reply@colori.in'
+app.config['MAIL_PASSWORD'] = '}t}PudVi1A(A'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 
 class accessories(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -278,7 +288,11 @@ def becomeadealer():
             producthandled = request.form['producthandled']
             setting_count = Settings.query.count()
             setting_data = Settings.query.filter_by(id=setting_count).first()
-            # print(fname,lname,address,city,pincode,country,cname,jtitle,email,telephone,mobile,vatno,typeofactivity,producthandled)
+
+            msg = Message('Dealer Details', sender = 'no-reply@colori.in', recipients = ['info@colori.in'])
+            msg.body = "First Name: "+ fname +"\nLast Name: "+ lname +"\nAddress: "+ address +"\nCity: "+ city +"\nPincode: "+ pincode + "\nCountry: "+ country +"\nCompany Name: "+ cname +"\nJob Title: "+ jtitle +"\nEmail: "+ email +"\nTelephone: "+ telephone +"\nMobile: "+ mobile +"\nVat No.: "+ vatno +"\nType Of Activity: "+ typeofactivity +"\nProduct Handled: "+ producthandled
+            mail.send(msg)
+
             return render_template("becomeadealer.html",success_message=1,setting_data=setting_data)
         setting_count = Settings.query.count()
         setting_data = Settings.query.filter_by(id=setting_count).first()
