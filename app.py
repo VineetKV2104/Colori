@@ -198,6 +198,9 @@ def brandsDisplay():
 def productsDisplay():
     try:
         products = product.query.all()
+        for pimg in products:
+            pimg.Product_Img1 = pimg.Product_Img1.replace(" ","%20")
+            pimg.Product_Img2 = pimg.Product_Img2.replace(" ","%20")
         setting_count = Settings.query.count()
         setting_data = Settings.query.filter_by(id=setting_count).first()
         return render_template("products.html",products=products,setting_data=setting_data)
@@ -209,6 +212,9 @@ def productDetails():
     try:
         pid = request.args['pid']
         products = product.query.filter_by(P_ID=pid).all()
+        for pimg in products:
+            pimg.Product_Img1 = pimg.Product_Img1.replace(" ","%20")
+            pimg.Product_Img2 = pimg.Product_Img2.replace(" ","%20")
         apps = application.query.filter_by(P_ID=pid).all()
         swatchesdata = swatches.query.filter_by(P_ID=pid).all()
         setting_count = Settings.query.count()
