@@ -158,12 +158,14 @@
         </ul>
         <!--end navigation-->
       </aside>
+      <!--end sidebar -->
+
       <!--start content-->
       <main class="page-content">
         <div class="card">
           <div class="card-body">
             <div class="d-flex align-items-center">
-              <h5 class="mb-0">Banner Details</h5>
+              <h5 class="mb-0">Category Details</h5>
               <div class="fs-5 ms-auto dropdown">
                 <div class="col">
                   <button
@@ -172,20 +174,24 @@
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                   >
-                    Add Product
+                    Add Category
                   </button>
                 </div>
               </div>
               <div
+                div
                 class="modal fade"
                 id="exampleModal"
                 tabindex="-1"
+                aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
               >
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title">Add Product</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Add Category
+                      </h5>
                       <button
                         type="button"
                         class="btn-close"
@@ -194,70 +200,39 @@
                       ></button>
                     </div>
                     <form
+                      action="/categorypanel"
                       method="post"
-                      action="/productpanel"
                       enctype="multipart/form-data"
                     >
-                      <input type="hidden" name="productid" />
                       <div class="modal-body">
-                        <h5 class="modal-title">Add Name</h5>
                         <div class="mb-3">
+                          <label
+                            for="exampleFormControlInput1"
+                            class="form-label"
+                            >Category Name</label
+                          >
                           <input
                             type="text"
                             class="form-control"
                             id="exampleFormControlInput1"
-                            placeholder="Enter Product Name"
-                            name="Name"
+                            placeholder="Enter Name"
+                            name="name"
                             required
                           />
                         </div>
-                        <h5 class="modal-title">Add Short Description</h5>
                         <div class="mb-3">
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="exampleFormControlInput1"
-                            placeholder="Enter Short Description"
-                            name="Short_Desc"
-                            required
-                          />
-                        </div>
-                        <h5 class="modal-title">Add Detailed Description</h5>
-                        <div class="mb-3">
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="exampleFormControlInput1"
-                            placeholder="Enter Detailed Description"
-                            name="Det_Desc"
-                            required
-                          />
-                        </div>
-                        <h5 class="modal-title">Upload Product Image 1</h5>
-                        <div class="mb-3">
+                          <label
+                            for="exampleFormControlInput1"
+                            class="form-label"
+                            >Upload Banner Image</label
+                          >
                           <input
                             type="file"
                             class="form-control"
                             id="exampleFormControlInput1"
-                            name="Product_Img1"
-                          />
-                        </div>
-                        <h5 class="modal-title">Upload Product Image 2</h5>
-                        <div class="mb-3">
-                          <input
-                            type="file"
-                            class="form-control"
-                            id="exampleFormControlInput1"
-                            name="Product_Img2"
-                          />
-                        </div>
-                        <h5 class="modal-title">Upload Video</h5>
-                        <div class="mb-3">
-                          <input
-                            type="file"
-                            class="form-control"
-                            id="exampleFormControlInput1"
-                            name="Video"
+                            placeholder="Enter Title Name"
+                            name="imgfile"
+                            required
                           />
                         </div>
                       </div>
@@ -270,7 +245,7 @@
                           Close
                         </button>
                         <button type="submit" class="btn btn-primary">
-                          Save
+                          Add
                         </button>
                       </div>
                     </form>
@@ -289,7 +264,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {% for product in products %}
+                  {% for bd in branddata %}
                   <tr>
                     <td>{{loop.index}}</td>
                     <td>
@@ -297,13 +272,13 @@
                         class="d-flex align-items-center gap-3 cursor-pointer"
                       >
                         <div class="">
-                          <p class="mb-0">{{ product['Name'] }}</p>
+                          <p class="mb-0">{{ bd['Name'] }}</p>
                         </div>
                       </div>
                     </td>
                     <td>
                       <img
-                        src="static/{{product['Product_Img1']}}"
+                        src="static/{{bd['Image']}}"
                         class="product-img-2"
                         alt="product img"
                       />
@@ -320,16 +295,53 @@
                       >
                         <a
                           href="javascript:;"
+                          class="text-primary"
+                          data-bs-toggle="modal"
+                          data-bs-placement="bottom"
+                          data-bs-target="#modal{{bd['id']}}"
+                          title="View Image"
+                          ><i class="bi bi-eye-fill"></i
+                        ></a>
+                        <div
+                          class="modal fade"
+                          id="modal{{bd['id']}}"
+                          tabindex="-1"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <img
+                                  src="static/{{ bd['Image']}}"
+                                  alt=""
+                                  width="100%"
+                                  height="100%"
+                                />
+                              </div>
+                              <div class="modal-footer">
+                                <button
+                                  type="button"
+                                  class="btn btn-secondary"
+                                  data-bs-dismiss="modal"
+                                >
+                                  Close
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <a
+                          href="javascript:;"
                           class="text-warning btn"
                           data-bs-toggle="modal"
                           data-bs-placement="bottom"
-                          data-bs-target="#editmodal{{product['id']}}"
+                          data-bs-target="#editmodal{{bd['id']}}"
                           title="Edit"
                           ><i class="bi bi-pencil-fill"></i
                         ></a>
                         <div
                           class="modal fade"
-                          id="editmodal{{product['id']}}"
+                          id="editmodal{{bd['id']}}"
                           tabindex="-1"
                           aria-hidden="true"
                         >
@@ -346,13 +358,13 @@
                               </div>
                               <form
                                 method="post"
-                                action="/editproduct"
+                                action="/editcategory"
                                 enctype="multipart/form-data"
                               >
                                 <input
                                   type="hidden"
-                                  name="productid"
-                                  value="{{ product['id'] }}"
+                                  name="categoryid"
+                                  value="{{ bd['id'] }}"
                                 />
                                 <div class="modal-body">
                                   <h5 class="modal-title">Edit Name</h5>
@@ -362,68 +374,21 @@
                                       class="form-control"
                                       id="exampleFormControlInput1"
                                       placeholder="Enter Product Name"
-                                      value="{{product['Name']}}"
+                                      value="{{bd['Name']}}"
                                       name="Name"
                                       required
                                     />
                                   </div>
+
                                   <h5 class="modal-title">
-                                    Edit Short Description
-                                  </h5>
-                                  <div class="mb-3">
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      id="exampleFormControlInput1"
-                                      placeholder="Enter Short Description"
-                                      value="{{product['Short_Desc']}}"
-                                      name="Short_Desc"
-                                      required
-                                    />
-                                  </div>
-                                  <h5 class="modal-title">
-                                    Enter Detailed Description
-                                  </h5>
-                                  <div class="mb-3">
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      id="exampleFormControlInput1"
-                                      placeholder="Enter Detailed Description"
-                                      value="{{product['Det_Desc']}}"
-                                      name="Det_Desc"
-                                      required
-                                    />
-                                  </div>
-                                  <h5 class="modal-title">
-                                    Upload Product Image 1
+                                    Upload Category Image
                                   </h5>
                                   <div class="mb-3">
                                     <input
                                       type="file"
                                       class="form-control"
                                       id="exampleFormControlInput1"
-                                      name="Product_Img1"
-                                    />
-                                  </div>
-                                  <h5 class="modal-title">
-                                    Upload Product Image 2
-                                  </h5>
-                                  <div class="mb-3">
-                                    <input
-                                      type="file"
-                                      class="form-control"
-                                      id="exampleFormControlInput1"
-                                      name="Product_Img2"
-                                    />
-                                  </div>
-                                  <h5 class="modal-title">Upload Video</h5>
-                                  <div class="mb-3">
-                                    <input
-                                      type="file"
-                                      class="form-control"
-                                      id="exampleFormControlInput1"
-                                      name="Video"
+                                      name="Logo"
                                     />
                                   </div>
                                 </div>
@@ -443,8 +408,9 @@
                             </div>
                           </div>
                         </div>
+
                         <a
-                          href="/deleteproduct?id={{product['id']}}"
+                          href="/deletecategory?id={{bd['id']}}"
                           class="text-danger"
                           data-bs-toggle="tooltip"
                           data-bs-placement="bottom"

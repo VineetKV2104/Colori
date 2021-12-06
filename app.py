@@ -30,6 +30,8 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
+#Z!]Pky?,haZ8
+
 class accessories(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     Image = db.Column(db.String(100), nullable=False)
@@ -59,6 +61,7 @@ class brand(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String(100), nullable=True)
     Image = db.Column(db.String(100), nullable=True)
+    BrandID = db.Column(db.Integer)
 
 class client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -177,14 +180,16 @@ class Settings(db.Model):
 
 
 @app.route("/")
-def hello_world():
+def index():
     try:
         banner = banners.query.all()
         setting_count = Settings.query.count()
         setting_data = Settings.query.filter_by(id=setting_count).first()
         return render_template("index.html",banners=banner,setting_data=setting_data)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route("/brand")
 def brandsDisplay():
@@ -192,7 +197,9 @@ def brandsDisplay():
         brands = brand.query.all()
         return render_template("brand.html",brands=brands)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route("/products")
 def productsDisplay():
@@ -205,7 +212,9 @@ def productsDisplay():
         setting_data = Settings.query.filter_by(id=setting_count).first()
         return render_template("products.html",products=products,setting_data=setting_data)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route("/productDetails")
 def productDetails():
@@ -221,7 +230,9 @@ def productDetails():
         setting_data = Settings.query.filter_by(id=setting_count).first()
         return render_template("product_details.html",products=products,setting_data=setting_data,apps=apps,swatchesdata=swatchesdata)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route("/companyoverview")
 def companyoverview():
@@ -231,7 +242,9 @@ def companyoverview():
         setting_data = Settings.query.filter_by(id=setting_count).first()
         return render_template("companyoverview.html",aboutus=aboutus,setting_data=setting_data)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route("/eventsandexhibit")
 def eventsandexhibit():
@@ -241,7 +254,9 @@ def eventsandexhibit():
         setting_data = Settings.query.filter_by(id=setting_count).first()
         return render_template("eventsandexhibit.html",events=events,setting_data=setting_data)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route("/portfolio")
 def portfolio():
@@ -251,7 +266,9 @@ def portfolio():
         setting_data = Settings.query.filter_by(id=setting_count).first()
         return render_template("portfolio.html",portfolios=portfolios,setting_data=setting_data)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route("/portfoliodetails")
 def portfoliodetails():
@@ -263,7 +280,9 @@ def portfoliodetails():
         setting_data = Settings.query.filter_by(id=setting_count).first()
         return render_template("portfolio_details.html",portfolio_gal=portfolio_gal,clientdata=clientdata,setting_data=setting_data)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route("/contactus")
 def contactus():
@@ -272,7 +291,9 @@ def contactus():
         setting_data = Settings.query.filter_by(id=setting_count).first()
         return render_template("contact.html",setting_data=setting_data)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route("/becomeadealer" ,methods=['GET','POST'])
 def becomeadealer():
@@ -304,7 +325,9 @@ def becomeadealer():
         setting_data = Settings.query.filter_by(id=setting_count).first()
         return render_template("becomeadealer.html",success_message=0,setting_data=setting_data)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/admin')
 def Admin():
@@ -332,7 +355,9 @@ def login():
             
         return render_template("login.html")
     except Exception as e:
-        print(e)
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route("/logout",methods=['GET','POST'])
 def logout():
@@ -340,7 +365,9 @@ def logout():
         session.clear()
         return redirect("/login")
     except Exception as e:
-        print(e)
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 
 
@@ -365,7 +392,9 @@ def bannerPanel():
         banner = banners.query.all()
         return render_template("bannerPanel.html",banners=banner)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/deletebanner',methods=['GET','POST'])
 def deletebanner():
@@ -379,7 +408,9 @@ def deletebanner():
         db.session.commit()
         return redirect("/bannerpanel")
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/portfoliogallerypanel',methods=['GET','POST'])
 def portfoliogallerypanel():
@@ -405,7 +436,9 @@ def portfoliogallerypanel():
         portfolio_gallerys = portfolio_gallery.query.all()
         return render_template("portfolio_gallery_panel.html",portfolio_gallerys=portfolio_gallerys,clients=clients)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/deleteportfolioimage',methods=['GET','POST'])
 def deleteportfolioimage():
@@ -419,7 +452,9 @@ def deleteportfolioimage():
         db.session.commit()
         return redirect("/portfoliogallerypanel")
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 
 @app.route('/portfoliopanel',methods=['GET','POST'])
@@ -447,7 +482,9 @@ def portfoliopanel():
         clients = client.query.all()
         return render_template('portfoliopanel.html',clients=clients)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/deleteclient',methods=['GET','POST'])
 def deleteclient():
@@ -461,7 +498,9 @@ def deleteclient():
         db.session.commit()
         return redirect("/portfoliopanel")
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 
 @app.route('/aboutuspanel')
@@ -473,7 +512,9 @@ def aboutuspanel():
         aboutus = Aboutus.query.all()
         return render_template('aboutuspanel.html',aboutus=aboutus)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/addaboutustitle',methods=['GET','POST'])
 def addaboutustitle():
@@ -489,7 +530,9 @@ def addaboutustitle():
         aboutus = Aboutus.query.all()
         return render_template('aboutuspanel.html',aboutus=aboutus)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/editaboutus',methods=['GET','POST'])
 def editaboutus():
@@ -508,7 +551,9 @@ def editaboutus():
         aboutus = Aboutus.query.all()
         return render_template('aboutuspanel.html',aboutus=aboutus)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/deleteaboutus',methods=['GET','POST'])
 def deleteaboutus():
@@ -522,7 +567,9 @@ def deleteaboutus():
         db.session.commit()
         return redirect("/aboutuspanel")
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/eventpanel',methods=['GET','POST'])
 def eventpanel():
@@ -548,7 +595,9 @@ def eventpanel():
         events = event.query.all()
         return render_template("eventpanel.html",events=events)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/deleteevent',methods=['GET','POST'])
 def deleteevent():
@@ -562,7 +611,9 @@ def deleteevent():
         db.session.commit()
         return redirect("/eventpanel")
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/editevent',methods=['GET','POST'])
 def editevent():
@@ -593,7 +644,9 @@ def editevent():
             db.session.commit()
         return redirect("/eventpanel")
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/productpanel',methods=['GET','POST'])
 def productpanel():
@@ -644,7 +697,9 @@ def productpanel():
         products = product.query.all()
         return render_template("productpanel.html",products=products)
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/editproduct',methods=['GET','POST'])
 def editproduct():
@@ -699,7 +754,9 @@ def editproduct():
             db.session.commit()
         return redirect("/productpanel")
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/deleteproduct',methods=['GET','POST'])
 def deleteproduct():
@@ -713,7 +770,9 @@ def deleteproduct():
         db.session.commit()
         return redirect("/productpanel")
     except Exception as e:
-        return render_template("404.html")
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 
 @app.route('/settings',methods=['GET','POST'])
 def settings():
@@ -750,6 +809,83 @@ def error():
     setting_count = Settings.query.count()
     setting_data = Settings.query.filter_by(id=setting_count).first()
     return render_template("404.html",setting_data=setting_data)
+
+@app.route('/categorypanel',methods=['GET','POST'])
+def categorypanel():
+    try:
+        if request.method=='POST':
+            brand_count = brand.query.count()
+            name = request.form['name']
+            file = request.files['imgfile']
+            file.seek(0, os.SEEK_END)
+            if file.tell() == 0:
+                pass
+            file.seek(0)
+            fname= 'static/Images/Brand/'+str(brand_count+1)+'_'+secure_filename(file.filename)
+            file.save(fname)
+            fname= 'Images/Brand/'+str(brand_count+1)+'_'+secure_filename(file.filename)
+            brandlastdata = brand.query.with_entities(brand.BrandID).filter_by(id=brand_count).first()
+            brandid = brandlastdata[0]+1
+            addbrand = brand(Name=name,Image=fname,BrandID=brandid)
+            db.session.add(addbrand)
+            db.session.commit()
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        branddata =  brand.query.all()
+        return render_template("categorypanel.html",setting_data=setting_data,branddata=branddata)
+    except Exception as e:
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
+
+@app.route('/deletecategory',methods=['GET','POST'])
+def deletecategory():
+    try:
+        # if not session.get("name"):
+        #     # if not there in the session then redirect to the login page
+        #     return redirect("/login")
+        categoryid = request.args['id']
+        removecategory = brand.query.filter_by(id=categoryid).first()
+        db.session.delete(removecategory)
+        db.session.commit()
+        return redirect("/categorypanel")
+    except Exception as e:
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
+
+
+@app.route('/editcategory',methods=['GET','POST'])
+def editcategory():
+    try:
+        # if not session.get("name"):
+        #     # if not there in the session then redirect to the login page
+        #     return redirect("/login")
+        if request.method == 'POST':
+            c_id=request.form['categoryid']
+            brandname = request.form['Name']
+            
+            brand_count = brand.query.count()
+            branddata = brand.query.filter_by(id=c_id).first()
+            file = request.files['Logo']
+            file.seek(0, os.SEEK_END)
+            branddata.Name = brandname
+            
+
+            if file.tell() == 0:
+                pass
+            else:
+                file.seek(0)
+                fname= 'static/Images/Brand/'+str(brand_count+1)+'_'+secure_filename(file.filename)
+                file.save(fname)
+                branddata.Image='Images/Brand/'+str(brand_count+1)+'_'+secure_filename(file.filename)
+            db.session.commit()
+        return redirect("/categorypanel")
+    except Exception as e:
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
+
 
 # @app.route("/transfer")
 # def transfer():

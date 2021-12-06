@@ -12,6 +12,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
     <meta name="description" content="construction html5 template" />
+
     <link href="static/Images/logo2.png" rel="icon" />
 
     <!-- Fonts
@@ -40,6 +41,13 @@
     <!-- Document Title
 ============================================= -->
     <title>Colori</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
     <div class="preloader">
@@ -209,9 +217,88 @@
               </div>
               <div class="row">
                 {% for app in apps %}
+
                 <div class="col-xs-12 col-sm-2 col-md-2 product-item">
                   <div class="product-img">
-                    <img src="static/{{app['ImageSrc']}}" alt="product" />
+                    <a
+                      class="btn"
+                      data-toggle="modal"
+                      data-target="#pop{{app['id']}}"
+                    >
+                      <img src="static/{{app['ImageSrc']}}" alt="product" />
+                    </a>
+
+                    <div
+                      class="modal fade"
+                      id="pop{{app['id']}}"
+                      tabindex="-1"
+                      role="dialog"
+                      aria-labelledby="exampleModalCenterTitle"
+                      aria-hidden="true"
+                      style="background: transparent"
+                    >
+                      <div
+                        class="modal-dialog modal-dialog-centered"
+                        role="document"
+                      >
+                        <div
+                          class="modal-content"
+                          style="background: transparent"
+                        >
+                          <div class="modal-body">
+                            <div
+                              id="carouselExampleControls{{app['id']}}"
+                              class="carousel slide"
+                              data-bs-ride="carousel"
+                            >
+                              <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                  <img
+                                    src="static/{{app['ImageSrc']}}"
+                                    alt="product"
+                                  />
+                                </div>
+                                {% for a in apps %} {% if a['ImageSrc'] !=
+                                app['ImageSrc'] %}
+                                <div class="carousel-item">
+                                  <img
+                                    src="static/{{a['ImageSrc']}}"
+                                    alt="product"
+                                  />
+                                </div>
+                                {% endif %} {% endfor %}
+                              </div>
+                              <button
+                                class="carousel-control-prev"
+                                type="button"
+                                data-bs-target="#carouselExampleControls{{app['id']}}"
+                                data-bs-slide="prev"
+                              >
+                                <span>
+                                  <img
+                                    src="static/assets/images/chevron-circle-left-solid.svg"
+                                    alt=""
+                                  />
+                                </span>
+                              </button>
+                              <button
+                                class="carousel-control-next"
+                                type="button"
+                                data-bs-target="#carouselExampleControls{{app['id']}}"
+                                data-bs-slide="next"
+                              >
+                                <span>
+                                  <img
+                                    src="static/assets/images/chevron-circle-right-solid.svg"
+                                    alt=""
+                                  />
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 {% endfor %}
@@ -225,7 +312,85 @@
                 {% for swatches in swatchesdata %}
                 <div class="col-xs-12 col-sm-2 col-md-2 product-item">
                   <div class="product-img">
-                    <img src="static/{{swatches['ImageSrc']}}" alt="product" />
+                    <a
+                      class="btn"
+                      data-toggle="modal"
+                      data-target="#s{{swatches['id']}}"
+                    >
+                      <img
+                        src="static/{{swatches['ImageSrc']}}"
+                        alt="product"
+                      />
+                    </a>
+
+                    <div
+                      class="modal fade"
+                      id="s{{swatches['id']}}"
+                      tabindex="-1"
+                      role="dialog"
+                      aria-labelledby="exampleModalCenterTitle"
+                      aria-hidden="true"
+                      style="background: transparent"
+                    >
+                      <div
+                        class="modal-dialog modal-dialog-centered"
+                        role="document"
+                      >
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div
+                              id="carouselsw{{swatches['id']}}"
+                              class="carousel slide"
+                              data-bs-ride="carousel"
+                            >
+                              <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                  <img
+                                    src="static/{{swatches['ImageSrc']}}"
+                                    alt="product"
+                                  />
+                                </div>
+                                {% for s in swatchesdata %} {% if s['ImageSrc']
+                                != swatches['ImageSrc'] %}
+                                <div class="carousel-item">
+                                  <img
+                                    src="static/{{s['ImageSrc']}}"
+                                    alt="product"
+                                  />
+                                </div>
+                                {% endif %} {% endfor %}
+                              </div>
+                              <button
+                                class="carousel-control-prev"
+                                type="button"
+                                data-bs-target="#carouselsw{{swatches['id']}}"
+                                data-bs-slide="prev"
+                              >
+                                <span>
+                                  <img
+                                    src="static/assets/images/chevron-circle-left-solid.svg"
+                                    alt=""
+                                  />
+                                </span>
+                              </button>
+                              <button
+                                class="carousel-control-next"
+                                type="button"
+                                data-bs-target="#carouselsw{{swatches['id']}}"
+                                data-bs-slide="next"
+                              >
+                                <span>
+                                  <img
+                                    src="static/assets/images/chevron-circle-right-solid.svg"
+                                    alt=""
+                                  />
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 {% endfor %}
@@ -371,5 +536,6 @@
     <script src="static/assets/js/jquery-2.1.1.min.js"></script>
     <script src="static/assets/js/plugins-v=1.0.0.js"></script>
     <script src="static/assets/js/functions-v=1.2.0.js"></script>
+    <script src="static/assets/js/bootstrap.min.js"></script>
   </body>
 </html>

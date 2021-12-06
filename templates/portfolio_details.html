@@ -191,22 +191,59 @@
                     aria-labelledby="exampleModalCenterTitle"
                     aria-hidden="true"
                   >
-                    <div
-                      class="modal-dialog modal-dialog-centered"
-                      role="document"
-                    >
-                      <div class="modal-content">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div
+                        class="modal-content"
+                        style="background: transparent"
+                      >
                         <div class="modal-body">
-                          <img src="static/{{pg['Img']}}" alt="product" />
-                        </div>
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-dismiss="modal"
+                          <div
+                            id="carousel{{pg['id']}}"
+                            class="carousel slide"
+                            data-bs-ride="carousel"
                           >
-                            Close
-                          </button>
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img
+                                  src="static/{{pg['Img']}}"
+                                  class=".imgslide"
+                                  alt="product"
+                                />
+                              </div>
+                              {% for p in portfolio_gal[::-1] %} {% if p['Img']
+                              != pg['Img'] %}
+                              <div class="carousel-item">
+                                <img src="static/{{p['Img']}}" alt="product" />
+                              </div>
+                              {% endif %} {% endfor %}
+                            </div>
+                            <button
+                              class="carousel-control-prev"
+                              type="button"
+                              data-bs-target="#carousel{{pg['id']}}"
+                              data-bs-slide="prev"
+                            >
+                              <span>
+                                <img
+                                  src="static/assets/images/chevron-circle-left-solid.svg"
+                                  alt=""
+                                />
+                              </span>
+                            </button>
+                            <button
+                              class="carousel-control-next"
+                              type="button"
+                              data-bs-target="#carousel{{pg['id']}}"
+                              data-bs-slide="next"
+                            >
+                              <span>
+                                <img
+                                  src="static/assets/images/chevron-circle-right-solid.svg"
+                                  alt=""
+                                />
+                              </span>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -345,5 +382,6 @@
     <script src="static/assets/js/jquery-2.1.1.min.js"></script>
     <script src="static/assets/js/plugins-v=1.0.0.js"></script>
     <script src="static/assets/js/functions-v=1.2.0.js"></script>
+    <script src="static/assets/js/bootstrap.min.js"></script>
   </body>
 </html>
