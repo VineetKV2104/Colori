@@ -195,7 +195,9 @@ def index():
 def brandsDisplay():
     try:
         brands = brand.query.all()
-        return render_template("brand.html",brands=brands)
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("brand.html",brands=brands,setting_data=setting_data)
     except Exception as e:
         setting_count = Settings.query.count()
         setting_data = Settings.query.filter_by(id=setting_count).first()
@@ -204,7 +206,8 @@ def brandsDisplay():
 @app.route("/products")
 def productsDisplay():
     try:
-        products = product.query.all()
+        brandid = request.args['id']
+        products = product.query.filter_by(BrandID = brandid).all()
         for pimg in products:
             pimg.Product_Img1 = pimg.Product_Img1.replace(" ","%20")
             pimg.Product_Img2 = pimg.Product_Img2.replace(" ","%20")
