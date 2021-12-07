@@ -8988,6 +8988,12 @@ td.cart-product-quantity {
 /* Custom, iPhone Retina */
 @media only screen and (min-width: 320px) and (max-width: 767px) {
   .product-img img {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+
+  .modal-images {
     width: auto;
     margin-right: auto;
     margin-left: auto;
@@ -9852,4 +9858,9 @@ footer hr {
     padding-top: 120px;
     padding-bottom: 120px;
   }
+}
+
+.modal-images {
+  width: 100%;
+  height: auto;
 }

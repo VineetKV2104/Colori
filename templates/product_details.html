@@ -41,13 +41,6 @@
     <!-- Document Title
 ============================================= -->
     <title>Colori</title>
-
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
     <div class="preloader">
@@ -75,12 +68,7 @@
               <span class="icon-bar"></span>
             </button>
             <a class="logo" href="/">
-              <img
-                src="static/Images/logo1.png"
-                alt="Colori"
-                width="250"
-                height="43"
-              />
+              <img src="static/Images/logo1.png" alt="Colori" />
             </a>
           </div>
 
@@ -108,7 +96,7 @@
                 </ul>
               </li>
               <li>
-                <a href="/products">Products</a>
+                <a href="/brand">Category</a>
               </li>
               <li>
                 <a href="/portfolio">Portfolio</a>
@@ -217,84 +205,90 @@
               </div>
               <div class="row">
                 {% for app in apps %}
-
+                <!-- <div>
+                  <img src="static/{{app['ImageSrc']}}" alt="product" />
+                </div> -->
                 <div class="col-xs-12 col-sm-2 col-md-2 product-item">
-                  <div class="product-img">
-                    <a
-                      class="btn"
-                      data-toggle="modal"
-                      data-target="#pop{{app['id']}}"
-                    >
+                  <a
+                    class="btn"
+                    data-toggle="modal"
+                    data-target="#pop{{app['id']}}"
+                  >
+                    <div class="product-img">
                       <img src="static/{{app['ImageSrc']}}" alt="product" />
-                    </a>
+                    </div>
+                  </a>
 
+                  <div
+                    class="modal fade"
+                    id="pop{{app['id']}}"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalCenterTitle"
+                    aria-hidden="true"
+                    style="background: transparent"
+                  >
                     <div
-                      class="modal fade"
-                      id="pop{{app['id']}}"
-                      tabindex="-1"
-                      role="dialog"
-                      aria-labelledby="exampleModalCenterTitle"
-                      aria-hidden="true"
-                      style="background: transparent"
+                      class="modal-dialog modal-dialog-centered"
+                      role="document"
                     >
                       <div
-                        class="modal-dialog modal-dialog-centered"
-                        role="document"
+                        class="modal-content"
+                        style="background: transparent"
                       >
-                        <div
-                          class="modal-content"
-                          style="background: transparent"
-                        >
-                          <div class="modal-body">
-                            <div
-                              id="carouselExampleControls{{app['id']}}"
-                              class="carousel slide"
-                              data-bs-ride="carousel"
-                            >
-                              <div class="carousel-inner">
-                                <div class="carousel-item active">
+                        <div class="modal-body">
+                          <div
+                            id="carouselExampleControls{{app['id']}}"
+                            class="carousel slide"
+                            data-bs-ride="carousel"
+                          >
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <div class="product-img">
                                   <img
                                     src="static/{{app['ImageSrc']}}"
                                     alt="product"
                                   />
                                 </div>
-                                {% for a in apps %} {% if a['ImageSrc'] !=
-                                app['ImageSrc'] %}
-                                <div class="carousel-item">
+                              </div>
+                              {% for a in apps %} {% if a['ImageSrc'] !=
+                              app['ImageSrc'] %}
+                              <div class="carousel-item">
+                                <div class="product-img">
                                   <img
                                     src="static/{{a['ImageSrc']}}"
                                     alt="product"
                                   />
                                 </div>
-                                {% endif %} {% endfor %}
                               </div>
-                              <button
-                                class="carousel-control-prev"
-                                type="button"
-                                data-bs-target="#carouselExampleControls{{app['id']}}"
-                                data-bs-slide="prev"
-                              >
-                                <span>
-                                  <img
-                                    src="static/assets/images/chevron-circle-left-solid.svg"
-                                    alt=""
-                                  />
-                                </span>
-                              </button>
-                              <button
-                                class="carousel-control-next"
-                                type="button"
-                                data-bs-target="#carouselExampleControls{{app['id']}}"
-                                data-bs-slide="next"
-                              >
-                                <span>
-                                  <img
-                                    src="static/assets/images/chevron-circle-right-solid.svg"
-                                    alt=""
-                                  />
-                                </span>
-                              </button>
+                              {% endif %} {% endfor %}
                             </div>
+                            <button
+                              class="carousel-control-prev"
+                              type="button"
+                              data-bs-target="#carouselExampleControls{{app['id']}}"
+                              data-bs-slide="prev"
+                            >
+                              <span>
+                                <img
+                                  src="static/assets/images/chevron-circle-left-solid.svg"
+                                  alt=""
+                                />
+                              </span>
+                            </button>
+                            <button
+                              class="carousel-control-next"
+                              type="button"
+                              data-bs-target="#carouselExampleControls{{app['id']}}"
+                              data-bs-slide="next"
+                            >
+                              <span>
+                                <img
+                                  src="static/assets/images/chevron-circle-right-solid.svg"
+                                  alt=""
+                                />
+                              </span>
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -330,7 +324,6 @@
                       role="dialog"
                       aria-labelledby="exampleModalCenterTitle"
                       aria-hidden="true"
-                      style="background: transparent"
                     >
                       <div
                         class="modal-dialog modal-dialog-centered"
@@ -345,18 +338,22 @@
                             >
                               <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                  <img
-                                    src="static/{{swatches['ImageSrc']}}"
-                                    alt="product"
-                                  />
+                                  <div class="product-img">
+                                    <img
+                                      src="static/{{swatches['ImageSrc']}}"
+                                      alt="product"
+                                    />
+                                  </div>
                                 </div>
                                 {% for s in swatchesdata %} {% if s['ImageSrc']
                                 != swatches['ImageSrc'] %}
                                 <div class="carousel-item">
-                                  <img
-                                    src="static/{{s['ImageSrc']}}"
-                                    alt="product"
-                                  />
+                                  <div class="product-img">
+                                    <img
+                                      src="static/{{s['ImageSrc']}}"
+                                      alt="product"
+                                    />
+                                  </div>
                                 </div>
                                 {% endif %} {% endfor %}
                               </div>
@@ -537,5 +534,6 @@
     <script src="static/assets/js/plugins-v=1.0.0.js"></script>
     <script src="static/assets/js/functions-v=1.2.0.js"></script>
     <script src="static/assets/js/bootstrap.min.js"></script>
+    <script src="static/one/assets/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
