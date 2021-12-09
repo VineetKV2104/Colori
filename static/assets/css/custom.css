@@ -1,0 +1,473 @@
+#gallery img {
+  height: 75vw;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+@media (min-width: 576px) {
+  #gallery img {
+    height: 35vw;
+  }
+}
+@media (min-width: 992px) {
+  #gallery img {
+    height: 18vw;
+  }
+}
+
+.carousel-item img {
+  height: 60vw;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+@media (min-width: 576px) {
+  .carousel-item img {
+    height: 350px;
+  }
+}
+
+* {
+  transition: 0.3s;
+}
+
+#gallery.custom {
+  padding: 0 15px;
+}
+#gallery.custom img {
+  display: block;
+  margin: 15px 0;
+  border-radius: 300px 30px 300px 300px;
+}
+#gallery.custom img:hover {
+  border-radius: 30px 90px 30px 30px;
+}
+
+#exampleModal.custom .modal-content {
+  background: none;
+  border: none;
+}
+#exampleModal.custom .modal-header {
+  border: none;
+}
+#exampleModal.custom .modal-header button {
+  background: none;
+  border-radius: 100px 100px 0 0;
+  padding: 5px 10px;
+  opacity: 1;
+  position: relative;
+  top: 3px;
+  border: solid 2px white;
+}
+@media (min-width: 992px) {
+  #exampleModal.custom .modal-header button {
+    top: 15px;
+  }
+}
+#exampleModal.custom .modal-header button:hover {
+  top: 3px;
+}
+#exampleModal.custom .modal-header span {
+  color: white;
+}
+#exampleModal.custom .modal-body {
+  padding: 0;
+  border: none;
+  position: relative;
+}
+#exampleModal.custom .modal-body::before,
+#exampleModal.custom .modal-body::after {
+  content: "";
+  height: 50px;
+  width: 50px;
+  display: block;
+  position: absolute;
+  background: white;
+  border-radius: 3px 10px;
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .modal-body::before,
+  #exampleModal.custom .modal-body::after {
+    border-radius: 3px 30px;
+    height: 100px;
+    width: 100px;
+  }
+}
+#exampleModal.custom .modal-body::before {
+  top: -5px;
+  left: -5px;
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .modal-body::before {
+    top: -15px;
+    left: -15px;
+  }
+}
+#exampleModal.custom .modal-body::after {
+  bottom: -5px;
+  right: -5px;
+  z-index: -1;
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .modal-body::after {
+    bottom: -15px;
+    right: -15px;
+  }
+}
+#exampleModal.custom .modal-footer {
+  border: none;
+  margin-top: 60px;
+}
+@media (min-width: 992px) {
+  #exampleModal.custom .modal-footer {
+    margin-top: 40px;
+  }
+}
+#exampleModal.custom .modal-footer .btn {
+  margin: auto;
+  border: solid 2px white;
+  background: none;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  padding: 0.2em 0.7em;
+}
+#exampleModal.custom .modal-footer .btn:hover {
+  background: white;
+  color: black;
+}
+#exampleModal.custom .carousel-control-prev,
+#exampleModal.custom .carousel-control-next {
+  font-size: 2em;
+  top: auto;
+  opacity: 1;
+  bottom: -52px;
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .carousel-control-prev,
+  #exampleModal.custom .carousel-control-next {
+    top: 0;
+    opacity: 0.5;
+    bottom: 0;
+  }
+}
+#exampleModal.custom .carousel-control-next-icon,
+#exampleModal.custom .carousel-control-prev-icon {
+  height: 30px;
+  width: 30px;
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .carousel-control-prev {
+    left: -90px;
+  }
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .carousel-control-next {
+    right: -90px;
+  }
+}
+#exampleModal.custom .carousel-indicators {
+  bottom: -60px;
+}
+@media (min-width: 992px) {
+  #exampleModal.custom .carousel-indicators {
+    bottom: -30px;
+  }
+}
+#exampleModal.custom .carousel-indicators li {
+  height: 30px;
+  border-radius: 100px;
+  background: none;
+  border: solid 2px white;
+}
+@media (min-width: 992px) {
+  #exampleModal.custom .carousel-indicators li {
+    height: 10px;
+  }
+}
+#exampleModal.custom .carousel-indicators li:hover {
+  background: white;
+}
+#exampleModal.custom .carousel-indicators li.active {
+  background: white;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+@media (min-width: 576px) {
+  .switch {
+    margin: 0;
+  }
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.switch-wrap {
+  text-align: center;
+  background-color: #b1fbc1;
+  padding: 30px;
+  border-radius: 3px;
+  margin: 30px 0 0;
+}
+@media (min-width: 576px) {
+  .switch-wrap {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+}
+
+.switch-text {
+  display: block;
+  margin: 0.5em;
+}
+@media (min-width: 576px) {
+  .switch-text {
+    margin: 0 1em 0 0;
+  }
+}
+
+.carousel {
+  position: relative;
+}
+.carousel.pointer-event {
+  touch-action: pan-y;
+}
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.carousel-inner:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.carousel-item {
+  position: relative;
+  display: none;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item {
+    transition: none;
+  }
+}
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  display: block;
+} /*!rtl:begin:ignore*/
+.active.carousel-item-end,
+.carousel-item-next:not(.carousel-item-start) {
+  transform: translateX(100%);
+}
+.active.carousel-item-start,
+.carousel-item-prev:not(.carousel-item-end) {
+  transform: translateX(-100%);
+} /*!rtl:end:ignore*/
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition-property: opacity;
+  transform: none;
+}
+.carousel-fade .carousel-item-next.carousel-item-start,
+.carousel-fade .carousel-item-prev.carousel-item-end,
+.carousel-fade .carousel-item.active {
+  z-index: 1;
+  opacity: 1;
+}
+.carousel-fade .active.carousel-item-end,
+.carousel-fade .active.carousel-item-start {
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0s 0.6s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-fade .active.carousel-item-end,
+  .carousel-fade .active.carousel-item-start {
+    transition: none;
+  }
+}
+.carousel-control-next,
+.carousel-control-prev {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  background: none;
+  border: 0;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-control-next,
+  .carousel-control-prev {
+    transition: none;
+  }
+}
+.carousel-control-next:focus,
+.carousel-control-next:hover,
+.carousel-control-prev:focus,
+.carousel-control-prev:hover {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  opacity: 0.9;
+}
+.carousel-control-prev {
+  left: 0;
+}
+.carousel-control-next {
+  right: 0;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
+} /*!rtl:options:{
+    "autoRename": true,
+    "stringMap":[ {
+      "name"    : "prev-next",
+      "search"  : "prev",
+      "replace" : "next"
+    } ]
+  }*/
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-image: none;
+}
+.carousel-indicators {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-right: 15%;
+  margin-bottom: 1rem;
+  margin-left: 15%;
+  list-style: none;
+}
+.carousel-indicators [data-mdb-target] {
+  box-sizing: content-box;
+  flex: 0 1 auto;
+  width: 30px;
+  height: 3px;
+  padding: 0;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  opacity: 0.5;
+  transition: opacity 0.6s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-indicators [data-mdb-target] {
+    transition: none;
+  }
+}
+.carousel-indicators .active {
+  opacity: 1;
+}
+.carousel-caption {
+  position: absolute;
+  right: 15%;
+  bottom: 1.25rem;
+  left: 15%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+  text-align: center;
+}
+.carousel-dark .carousel-control-next-icon,
+.carousel-dark .carousel-control-prev-icon {
+  filter: invert(1) grayscale(100);
+}
+.carousel-dark .carousel-indicators [data-mdb-target] {
+  background-color: #000;
+}
+.carousel-dark .carousel-caption {
+  color: #000;
+}

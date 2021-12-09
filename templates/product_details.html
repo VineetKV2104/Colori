@@ -41,6 +41,255 @@
     <!-- Document Title
 ============================================= -->
     <title>Colori</title>
+    <style>
+      body {
+        font-family: Verdana, sans-serif;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .row > .column {
+        padding: 0 8px;
+      }
+
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      .column {
+        float: left;
+        width: 25%;
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 5;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: black;
+      }
+
+      /* Modal Content */
+      .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        width: 90%;
+        max-width: 1200px;
+      }
+
+      /* The Close Button */
+      .close {
+        color: white;
+        position: absolute;
+        bottom: 10px;
+        right: 25px;
+        font-size: 35px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #999;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .mySlides {
+        display: none;
+      }
+
+      .cursor {
+        cursor: pointer;
+      }
+
+      /* Next & previous buttons */
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      /* Position the "next button" to the right */
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      /* On hover, add a black background color with a little bit see-through */
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      img {
+        margin-bottom: -4px;
+      }
+
+      .caption-container {
+        text-align: center;
+        background-color: black;
+        padding: 2px 16px;
+        color: white;
+      }
+
+      .demo {
+        opacity: 0.6;
+      }
+
+      .active,
+      .demo:hover {
+        opacity: 1;
+      }
+
+      img.hover-shadow {
+        transition: 0.3s;
+      }
+
+      .hover-shadow:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+    </style>
+    <style>
+      .myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .myImg:hover {
+        opacity: 0.7;
+      }
+      .myImg1 {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .myImg1:hover {
+        opacity: 0.7;
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 5; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+      }
+
+      /* Modal Content (image) */
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+      }
+
+      /* Caption of Modal Image */
+      .caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+      }
+
+      /* Add Animation */
+      .modal-content,
+      #caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+      }
+
+      @-webkit-keyframes zoom {
+        from {
+          -webkit-transform: scale(0);
+        }
+        to {
+          -webkit-transform: scale(1);
+        }
+      }
+
+      @keyframes zoom {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      /* The Close Button */
+      .close {
+        position: absolute;
+        bottom: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /* 100% Image Width on Smaller Screens */
+      @media only screen and (max-width: 700px) {
+        .modal-content {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="preloader">
@@ -96,7 +345,7 @@
                 </ul>
               </li>
               <li>
-                <a href="/brand">Category</a>
+                <a href="/brand">Products</a>
               </li>
               <li>
                 <a href="/portfolio">Portfolio</a>
@@ -203,194 +452,84 @@
               <div class="product-details text-center-xs">
                 <h5>Applications</h5>
               </div>
-              <div class="row">
-                {% for app in apps %}
-                <!-- <div>
-                  <img src="static/{{app['ImageSrc']}}" alt="product" />
-                </div> -->
-                <div class="col-xs-12 col-sm-2 col-md-2 product-item">
-                  <a
-                    class="btn"
-                    data-toggle="modal"
-                    data-target="#pop{{app['id']}}"
-                  >
-                    <div class="product-img">
-                      <img src="static/{{app['ImageSrc']}}" alt="product" />
-                    </div>
-                  </a>
 
-                  <div
-                    class="modal fade"
-                    id="pop{{app['id']}}"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="exampleModalCenterTitle"
-                    aria-hidden="true"
-                    style="background: transparent"
-                  >
-                    <div
-                      class="modal-dialog modal-dialog-centered"
-                      role="document"
-                    >
-                      <div
-                        class="modal-content"
-                        style="background: transparent"
-                      >
-                        <div class="modal-body">
-                          <div
-                            id="carouselExampleControls{{app['id']}}"
-                            class="carousel slide"
-                            data-bs-ride="carousel"
-                          >
-                            <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <div class="product-img">
-                                  <img
-                                    src="static/{{app['ImageSrc']}}"
-                                    alt="product"
-                                  />
-                                </div>
-                              </div>
-                              {% for a in apps %} {% if a['ImageSrc'] !=
-                              app['ImageSrc'] %}
-                              <div class="carousel-item">
-                                <div class="product-img">
-                                  <img
-                                    src="static/{{a['ImageSrc']}}"
-                                    alt="product"
-                                  />
-                                </div>
-                              </div>
-                              {% endif %} {% endfor %}
-                            </div>
-                            <button
-                              class="carousel-control-prev"
-                              type="button"
-                              data-bs-target="#carouselExampleControls{{app['id']}}"
-                              data-bs-slide="prev"
-                            >
-                              <span>
-                                <img
-                                  src="static/assets/images/chevron-circle-left-solid.svg"
-                                  alt=""
-                                />
-                              </span>
-                            </button>
-                            <button
-                              class="carousel-control-next"
-                              type="button"
-                              data-bs-target="#carouselExampleControls{{app['id']}}"
-                              data-bs-slide="next"
-                            >
-                              <span>
-                                <img
-                                  src="static/assets/images/chevron-circle-right-solid.svg"
-                                  alt=""
-                                />
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+              <div class="container">
+                <div class="row">
+                  {% for app in apps %}
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <div style="margin-bottom: 20px">
+                      <img
+                        src="static/{{app['ImageSrc']}}"
+                        style="width: 100%"
+                        onclick="openModal1();currentSlide1(1)"
+                        class="hover-shadow cursor"
+                      />
                     </div>
                   </div>
+                  {% endfor %}
                 </div>
-                {% endfor %}
+
+                <div id="myModal1" class="modal">
+                  <span class="close cursor" onclick="closeModal1()"
+                    >Close</span
+                  >
+                  <div class="modal-content">
+                    {% for app in apps %}
+
+                    <div class="mySlides1">
+                      <div class="numbertext">1 / 4</div>
+                      <img
+                        src="static/{{app['ImageSrc']}}"
+                        style="width: 100%"
+                      />
+                    </div>
+
+                    {% endfor %}
+                    <a class="prev" onclick="plusSlides1(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides1(1)">&#10095;</a>
+                  </div>
+                </div>
               </div>
 
               <hr class="mt-50 mb-30" />
               <div class="product-details text-center-xs">
                 <h5>Swatches</h5>
               </div>
-              <div class="row">
-                {% for swatches in swatchesdata %}
-                <div class="col-xs-12 col-sm-2 col-md-2 product-item">
-                  <div class="product-img">
-                    <a
-                      class="btn"
-                      data-toggle="modal"
-                      data-target="#s{{swatches['id']}}"
-                    >
-                      <img
-                        src="static/{{swatches['ImageSrc']}}"
-                        alt="product"
-                      />
-                    </a>
 
-                    <div
-                      class="modal fade"
-                      id="s{{swatches['id']}}"
-                      tabindex="-1"
-                      role="dialog"
-                      aria-labelledby="exampleModalCenterTitle"
-                      aria-hidden="true"
-                    >
-                      <div
-                        class="modal-dialog modal-dialog-centered"
-                        role="document"
-                      >
-                        <div class="modal-content">
-                          <div class="modal-body">
-                            <div
-                              id="carouselsw{{swatches['id']}}"
-                              class="carousel slide"
-                              data-bs-ride="carousel"
-                            >
-                              <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                  <div class="product-img">
-                                    <img
-                                      src="static/{{swatches['ImageSrc']}}"
-                                      alt="product"
-                                    />
-                                  </div>
-                                </div>
-                                {% for s in swatchesdata %} {% if s['ImageSrc']
-                                != swatches['ImageSrc'] %}
-                                <div class="carousel-item">
-                                  <div class="product-img">
-                                    <img
-                                      src="static/{{s['ImageSrc']}}"
-                                      alt="product"
-                                    />
-                                  </div>
-                                </div>
-                                {% endif %} {% endfor %}
-                              </div>
-                              <button
-                                class="carousel-control-prev"
-                                type="button"
-                                data-bs-target="#carouselsw{{swatches['id']}}"
-                                data-bs-slide="prev"
-                              >
-                                <span>
-                                  <img
-                                    src="static/assets/images/chevron-circle-left-solid.svg"
-                                    alt=""
-                                  />
-                                </span>
-                              </button>
-                              <button
-                                class="carousel-control-next"
-                                type="button"
-                                data-bs-target="#carouselsw{{swatches['id']}}"
-                                data-bs-slide="next"
-                              >
-                                <span>
-                                  <img
-                                    src="static/assets/images/chevron-circle-right-solid.svg"
-                                    alt=""
-                                  />
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+              <div class="container">
+                <div class="row">
+                  {% for sw in swatchesdata %}
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <div style="margin-bottom: 20px">
+                      <img
+                        src="static/{{sw['ImageSrc']}}"
+                        style="width: 100%"
+                        onclick="openModal();currentSlide(1)"
+                        class="hover-shadow cursor"
+                      />
                     </div>
                   </div>
+                  {% endfor %}
                 </div>
-                {% endfor %}
+
+                <div id="myModal" class="modal">
+                  <span class="close cursor" onclick="closeModal()">Close</span>
+                  <div class="modal-content">
+                    {% for sw in swatchesdata %}
+
+                    <div class="mySlides">
+                      <div class="numbertext">1 / 4</div>
+                      <img
+                        src="static/{{sw['ImageSrc']}}"
+                        style="width: 100%"
+                      />
+                    </div>
+
+                    {% endfor %}
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                  </div>
+                </div>
               </div>
 
               <!-- .product-details end -->
@@ -535,5 +674,89 @@
     <script src="static/assets/js/functions-v=1.2.0.js"></script>
     <script src="static/assets/js/bootstrap.min.js"></script>
     <script src="static/one/assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function openModal() {
+        document.getElementById("myModal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+      }
+
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+      }
+    </script>
+    <script>
+      function openModal1() {
+        document.getElementById("myModal1").style.display = "block";
+      }
+
+      function closeModal1() {
+        document.getElementById("myModal1").style.display = "none";
+      }
+
+      var slideIndex = 1;
+      showSlides1(slideIndex);
+
+      function plusSlides1(n) {
+        showSlides1((slideIndex += n));
+      }
+
+      function currentSlide1(n) {
+        showSlides1((slideIndex = n));
+      }
+
+      function showSlides1(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides1");
+        var dots = document.getElementsByClassName("demo1");
+        var captionText = document.getElementById("caption1");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+      }
+    </script>
   </body>
 </html>
