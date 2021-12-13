@@ -890,6 +890,39 @@ def editcategory():
         return render_template("404.html",setting_data=setting_data)
 
 
+
+@app.route('/editclient',methods=['GET','POST'])
+def editclient():
+    try:
+        # if not session.get("name"):
+        #     # if not there in the session then redirect to the login page
+        #     return redirect("/login")
+        if request.method == 'POST':
+            c_id=request.form['clientid']
+            clientname = request.form['Name']
+            desc = request.form['desc']
+            
+            client_count = client.query.count()
+            client_data = client.query.filter_by(id=c_id).first()
+            file = request.files['client_image']
+            file.seek(0, os.SEEK_END)
+            client_data.Name = clientname
+            client_data.Description = desc
+            
+
+            if file.tell() == 0:
+                pass
+            else:
+                file.seek(0)
+                fname= 'static/Images/Brand/'+str(client_count+1)+'_'+secure_filename(file.filename)
+                file.save(fname)
+                client_data.Logo='Images/Brand/'+str(client_count+1)+'_'+secure_filename(file.filename)
+            db.session.commit()
+        return redirect("/portfoliopanel")
+    except Exception as e:
+        setting_count = Settings.query.count()
+        setting_data = Settings.query.filter_by(id=setting_count).first()
+        return render_template("404.html",setting_data=setting_data)
 # @app.route("/transfer")
 # def transfer():
 #     clientdata = client.query.all()
