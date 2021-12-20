@@ -207,6 +207,7 @@ def brandsDisplay():
 def productsDisplay():
     try:
         brandid = request.args['id']
+        session['brandid'] = brandid
         products = product.query.filter_by(BrandID = brandid).all()
         for pimg in products:
             pimg.Product_Img1 = pimg.Product_Img1.replace(" ","%20")
@@ -223,6 +224,7 @@ def productsDisplay():
 def productDetails():
     try:
         pid = request.args['pid']
+        brandid = session.get("brandid")
         products = product.query.filter_by(P_ID=pid).all()
         for pimg in products:
             pimg.Product_Img1 = pimg.Product_Img1.replace(" ","%20")
@@ -231,7 +233,7 @@ def productDetails():
         swatchesdata = swatches.query.filter_by(P_ID=pid).all()
         setting_count = Settings.query.count()
         setting_data = Settings.query.filter_by(id=setting_count).first()
-        return render_template("product_details.html",products=products,setting_data=setting_data,apps=apps,swatchesdata=swatchesdata)
+        return render_template("product_details.html",products=products,setting_data=setting_data,apps=apps,swatchesdata=swatchesdata,brandid=brandid)
     except Exception as e:
         setting_count = Settings.query.count()
         setting_data = Settings.query.filter_by(id=setting_count).first()
@@ -844,9 +846,9 @@ def categorypanel():
 @app.route('/deletecategory',methods=['GET','POST'])
 def deletecategory():
     try:
-        # if not session.get("name"):
-        #     # if not there in the session then redirect to the login page
-        #     return redirect("/login")
+        if not session.get("name"):
+            # if not there in the session then redirect to the login page
+            return redirect("/login")
         categoryid = request.args['id']
         removecategory = brand.query.filter_by(id=categoryid).first()
         db.session.delete(removecategory)
@@ -861,9 +863,9 @@ def deletecategory():
 @app.route('/editcategory',methods=['GET','POST'])
 def editcategory():
     try:
-        # if not session.get("name"):
-        #     # if not there in the session then redirect to the login page
-        #     return redirect("/login")
+        if not session.get("name"):
+            # if not there in the session then redirect to the login page
+            return redirect("/login")
         if request.method == 'POST':
             c_id=request.form['categoryid']
             brandname = request.form['Name']
@@ -894,9 +896,9 @@ def editcategory():
 @app.route('/editclient',methods=['GET','POST'])
 def editclient():
     try:
-        # if not session.get("name"):
-        #     # if not there in the session then redirect to the login page
-        #     return redirect("/login")
+        if not session.get("name"):
+            # if not there in the session then redirect to the login page
+            return redirect("/login")
         if request.method == 'POST':
             c_id=request.form['clientid']
             clientname = request.form['Name']
